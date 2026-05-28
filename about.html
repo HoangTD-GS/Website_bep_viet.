@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu - Bếp Việt câu chuyện thương hiệu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --primary: #e65100; 
+            --secondary: #5c3d2e; 
+            --bg: #fcf9f5; 
+            --text: #424242; 
+        }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.8; 
+        }
+        
+        .header { 
+            background: white; 
+            padding: 15px 20px; 
+            position: sticky; 
+            top: 0; 
+            box-shadow: 0 4px 20px rgba(92,61,46,0.04); 
+            z-index: 100; 
+            display: flex; 
+            justify-content: center; 
+        }
+        
+        .header a { 
+            text-decoration: none; 
+            color: var(--primary); 
+            font-weight: 700; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: 0.3s; 
+        }
+        
+        .header a:hover { transform: translateX(-5px); }
+        
+        .hero-section { 
+            background: linear-gradient(135deg, #5c3d2e 0%, #3e2723 100%); 
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center; 
+        }
+        
+        .hero-section h1 { 
+            margin: 0 0 15px 0; 
+            font-size: 2.8rem; 
+            font-weight: 700; 
+            letter-spacing: -1px; 
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .hero-section p { 
+            margin: 0 auto; 
+            max-width: 600px; 
+            font-size: 1.15rem; 
+            opacity: 0.9; 
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        .wrapper { 
+            max-width: 900px; 
+            margin: -50px auto 60px auto; 
+            padding: 0 20px; 
+            position: relative;
+            z-index: 10;
+        }
+        
+        .main-card { 
+            background: white; 
+            padding: 50px; 
+            border-radius: 24px; 
+            box-shadow: 0 15px 40px rgba(92,61,46,0.08); 
+            border: 1px solid #f1ebe4;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+        
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+            margin-bottom: 40px; 
+            text-align: center; 
+            border-bottom: 1px dashed #e6dfd5; 
+            padding-bottom: 30px; 
+        }
+        
+        .stat-item h2 { margin: 0; font-size: 2.5rem; color: var(--primary); font-weight: 700; line-height: 1.2; }
+        .stat-item p { margin: 5px 0 0 0; color: #888; font-size: 0.95rem; font-weight: 500; }
+        
+        h2.section-title { 
+            color: var(--secondary); 
+            font-size: 1.6rem; 
+            margin-top: 40px; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
+        
+        h2.section-title::before { 
+            content: ""; 
+            display: inline-block; 
+            width: 5px; 
+            height: 24px; 
+            background: var(--primary); 
+            border-radius: 4px; 
+        }
+        
+        p { font-size: 1.05rem; color: #555; text-align: justify; }
+        
+        .pillar-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+            margin-top: 25px; 
+        }
+        
+        .pillar-card { 
+            background: #faf6f0; 
+            padding: 25px 20px; 
+            border-radius: 16px; 
+            border-left: 4px solid var(--primary); 
+            transition: transform 0.3s ease;
+        }
+        
+        .pillar-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+        .pillar-card h4 { margin: 0 0 10px 0; color: var(--secondary); font-size: 1.1rem; }
+        .pillar-card p { margin: 0; font-size: 0.95rem; color: #666; text-align: left; }
+
+        /* --- HIỆU ỨNG ANIMATION --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- TỐI ƯU MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-section { padding: 60px 15px; }
+            .hero-section h1 { font-size: 2.2rem; }
+            .main-card { padding: 30px 20px; }
+            
+            /* Gập 3 cột thành 1 cột trên điện thoại */
+            .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+            .pillar-grid { grid-template-columns: 1fr; gap: 15px; }
+            
+            .stat-item h2 { font-size: 2.2rem; }
+            p { text-align: left; } /* Chuyển text-align về left cho dễ đọc trên mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html">← Trở về Trang chủ Bếp Việt</a>
+    </header>
+
+    <section class="hero-section">
+        <h1>Thắp Lửa Khơi Nguồn Vị Việt</h1>
+        <p>Hành trình số hóa nghệ thuật ẩm thực, kết nối thế hệ qua từng hương vị thân quen.</p>
+    </section>
+
+    <main class="wrapper">
+        <div class="main-card">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h2>1,000+</h2>
+                    <p>Công thức chuẩn vị</p>
+                </div>
+                <div class="stat-item">
+                    <h2>100%</h2>
+                    <p>Ảnh WebP Sắc Nét</p>
+                </div>
+                <div class="stat-item">
+                    <h2>3 Trong 1</h2>
+                    <p>Mặn • Chay • Đồ Uống</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Câu Chuyện Của Chúng Tôi</h2>
+            <p>Bếp Việt không đơn thuần là một website tra cứu công thức nấu ăn, mà là một cuốn nhật ký ẩm thực sống động. Chúng tôi tin rằng mỗi món ăn đều mang trong mình một câu chuyện, một ký ức sâu sắc về gia đình và cội nguồn. Trong thời đại số hóa, những giá trị ấy rất dễ bị mai một. Vì vậy, Bếp Việt ra đời để trở thành cầu nối, giúp việc vào bếp trở nên dễ dàng, khoa học và tràn đầy cảm hứng đối với tất cả mọi người.</p>
+
+            <h2 class="section-title">Giá Trị Cốt Lõi</h2>
+            <div class="pillar-grid">
+                <div class="pillar-card">
+                    <h4>🌱 Trải Nghiệm Cá Nhân</h4>
+                    <p>Hệ thống lọc thông minh phân tách rõ rệt thế giới món Mặn thanh tao, món Chay tịnh và Đồ uống giải nhiệt chỉ với một cái chạm.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4>📸 Hoàn Hảo Thị Giác</h4>
+                    <p>Từng thớ thịt, lớp nước sốt bóng bẩy hay hiệu ứng xóa phông nghệ thuật được truyền tải trọn vẹn nhờ công nghệ nén ảnh thông minh, siêu nét nhưng load cực nhanh.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4>🎯 Chính Xác Từng Bước</h4>
+                    <p>Mọi định lượng nguyên liệu, mẹo hay nhà bếp và chỉ số Kcal đều được kiểm duyệt khắt khe, giúp bạn nấu là thành công.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Tầm Nhìn Đến Tương Lai</h2>
+            <p>Chúng tôi đang liên tục nâng cấp hệ thống cốt lõi để hướng tới một hệ sinh thái ẩm thực thông minh, tích hợp sổ tay lưu trữ cá nhân và kết nối cộng đồng yêu bếp trên khắp dải đất hình chữ S. Sứ mệnh của chúng tôi là giữ cho ngọn lửa bếp luôn đỏ, và mâm cơm gia đình luôn ngập tràn hạnh phúc.</p>
+        </div>
+    </main>
+
+</body>
+</html>

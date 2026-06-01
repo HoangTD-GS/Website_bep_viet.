@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính Sách Bảo Mật An Toàn - Bếp Việt</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. BIẾN MÀU SẮC TOÀN CỤC --- */
+        :root { 
+            --primary: #e65100; 
+            --secondary: #5c3d2e; 
+            --safe-green: #2e7d32; /* Màu xanh lá biểu tượng của sự an toàn */
+            --bg: #fcf9f5; 
+            --text: #424242; 
+        }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.8; 
+        }
+
+        /* --- 2. THANH ĐIỀU HƯỚNG CỐ ĐỊNH (HEADER) --- */
+        .header { 
+            background: white; 
+            padding: 15px 20px; 
+            position: sticky; 
+            top: 0; 
+            box-shadow: 0 4px 20px rgba(92,61,46,0.04); 
+            z-index: 100; 
+            display: flex; 
+            justify-content: center; 
+        }
+        
+        .header a { 
+            text-decoration: none; 
+            color: var(--primary); 
+            font-weight: 700; 
+            transition: 0.3s; 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .header a:hover { transform: translateX(-5px); }
+
+        /* --- 3. KHỐI BANNER TIÊU ĐỀ (HERO SECTION) --- */
+        .hero-section { 
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); 
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center; 
+        }
+        
+        .hero-section h1 { 
+            margin: 0 0 15px 0; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            animation: fadeInDown 0.6s ease-out; /* Hiệu ứng lướt xuống */
+        }
+
+        /* --- 4. KHUNG NỘI DUNG CHÍNH (MAIN WRAPPER) --- */
+        .wrapper { 
+            max-width: 800px; 
+            margin: -50px auto 60px auto; 
+            padding: 0 20px; 
+            position: relative;
+            z-index: 10;
+        }
+        
+        .main-card { 
+            background: white; 
+            padding: 50px; 
+            border-radius: 24px; 
+            box-shadow: 0 15px 40px rgba(92,61,46,0.06); 
+            border: 1px solid #f1ebe4; 
+            animation: fadeInUp 0.8s ease-out 0.2s both; /* Hiệu ứng lướt lên */
+        }
+        
+        h2.section-title { 
+            color: var(--secondary); 
+            font-size: 1.45rem; 
+            margin-top: 40px; 
+            border-bottom: 2px solid #faf6f0; 
+            padding-bottom: 10px; 
+        }
+
+        p { font-size: 1.05rem; color: #555; text-align: justify; margin-bottom: 20px;}
+        p strong, p b { color: var(--secondary); }
+
+        /* --- 5. HIỆU ỨNG CHUYỂN ĐỘNG (ANIMATIONS) --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 6. TỐI ƯU HÓA MÀN HÌNH ĐIỆN THOẠI (RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            .hero-section { padding: 60px 15px; }
+            .hero-section h1 { font-size: 2rem; }
+            .main-card { padding: 30px 20px; }
+            h2.section-title { font-size: 1.3rem; margin-top: 30px; }
+            p { text-align: left; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html">← Trở về Trang chủ Bếp Việt</a>
+    </header>
+
+    <section class="hero-section">
+        <h1>Quyền Riêng Tư & Bảo Mật Dữ Liệu</h1>
+    </section>
+
+    <main class="wrapper">
+        <article class="main-card">
+            
+            <p>Sự tin tưởng của bạn là tài sản lớn nhất của Bếp Việt. Chúng tôi cam kết minh bạch tuyệt đối về cách thu thập, lưu trữ và bảo vệ thông tin cá nhân của bạn khi bạn đồng hành cùng chúng tôi.</p>
+
+            <h2 class="section-title">1. Dữ Liệu Chúng Tôi Thu Thập</h2>
+            <p>Khi bạn sử dụng tính năng Đăng ký nhận bản tin (Subscriber), chúng tôi chỉ thu thập duy nhất địa chỉ <b>Email</b> của bạn. Ngoài ra, hệ thống lưu trữ Cookie tạm thời để ghi nhớ lựa chọn Tab (Mặn/Chay/Đồ uống) của bạn, giúp bạn không phải chọn lại vào lần truy cập sau.</p>
+
+            <h2 class="section-title">2. Cam Kết Sử Dụng Thông Tin</h2>
+            <p>Địa chỉ email của bạn chỉ được dùng vào một mục đích duy nhất: Gửi tặng các thực đơn món ăn ngon hàng tuần, cập nhật tính năng mới từ hệ thống Bếp Việt. Chúng tôi nói <b style="color: #d32f2f;">KHÔNG</b> với hành vi bán, cho thuê hoặc chia sẻ thông tin của bạn cho bất kỳ bên thứ ba nào.</p>
+
+            <h2 class="section-title">3. Bảo Mật Tài Khoản Tuyệt Đối</h2>
+            <p>Hệ thống cơ sở dữ liệu của Bếp Việt mã hóa thông tin nghiêm ngặt đối với hệ thống quản lý tài khoản người dùng (Users). Mật khẩu của tài khoản Admin/Member được bảo vệ đa lớp chống lại các cuộc tấn công rò rỉ thông tin.</p>
+
+            <h2 class="section-title">4. Quyền Kiểm Soát Của Bạn</h2>
+            <p>Bạn có toàn quyền yêu cầu xóa bỏ vĩnh viễn Email của mình ra khỏi hệ thống danh sách Subscriber bất kỳ lúc nào bằng cách liên hệ với chúng tôi hoặc nhấn nút Hủy đăng ký dưới chân mỗi Email nhận được.</p>
+            
+        </article>
+    </main>
+
+</body>
+</html>

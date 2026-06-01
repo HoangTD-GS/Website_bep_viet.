@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính Sách Quảng Cáo Minh Bạch - Bếp Việt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- BIẾN MÀU SẮC --- */
+        :root { 
+            --primary: #e65100; 
+            --secondary: #5c3d2e; 
+            --bg: #fcf9f5; 
+            --text: #424242; 
+        }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.8; 
+        }
+
+        /* --- THANH ĐIỀU HƯỚNG --- */
+        .header { 
+            background: white; 
+            padding: 15px 20px; 
+            position: sticky; 
+            top: 0; 
+            box-shadow: 0 4px 20px rgba(92,61,46,0.04); 
+            z-index: 100; 
+            display: flex; 
+            justify-content: center; 
+        }
+        
+        .header a { 
+            text-decoration: none; 
+            color: var(--primary); 
+            font-weight: 700; 
+            transition: 0.3s; 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .header a:hover { transform: translateX(-5px); }
+
+        /* --- HERO SECTION --- */
+        .hero-section { 
+            background: linear-gradient(135deg, #e65100 0%, #bf360c 100%); 
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center; 
+        }
+        
+        .hero-section h1 { 
+            margin: 0 0 15px 0; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        /* --- NỘI DUNG CHÍNH --- */
+        .wrapper { 
+            max-width: 800px; 
+            margin: -50px auto 60px auto; 
+            padding: 0 20px; 
+            position: relative;
+            z-index: 10;
+        }
+        
+        .main-card { 
+            background: white; 
+            padding: 50px; 
+            border-radius: 24px; 
+            box-shadow: 0 15px 40px rgba(92,61,46,0.06); 
+            border: 1px solid #f1ebe4; 
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        h2.section-title { 
+            color: var(--secondary); 
+            font-size: 1.5rem; 
+            margin-top: 40px; 
+            border-bottom: 2px solid #faf6f0; 
+            padding-bottom: 10px; 
+        }
+        
+        .box-notice { 
+            background: #fff3e0; 
+            border-left: 5px solid var(--primary); 
+            padding: 20px 25px; 
+            border-radius: 12px; 
+            margin: 10px 0 30px 0; 
+            color: #d84315; 
+            font-weight: 500; 
+            font-size: 1.05rem;
+        }
+        
+        p, ul li { font-size: 1.05rem; color: #555; text-align: justify; }
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 15px; }
+
+        /* --- HIỆU ỨNG ANIMATION CHUẨN PREMIUM --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- TỐI ƯU GIAO DIỆN ĐIỆN THOẠI --- */
+        @media (max-width: 768px) {
+            .hero-section { padding: 60px 15px; }
+            .hero-section h1 { font-size: 2rem; }
+            .main-card { padding: 30px 20px; }
+            h2.section-title { font-size: 1.3rem; margin-top: 30px; }
+            p, ul li { text-align: left; font-size: 1rem; }
+            .box-notice { padding: 15px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html">← Trở về Trang chủ Bếp Việt</a>
+    </header>
+
+    <section class="hero-section">
+        <h1>Chính Sách Quảng Cáo & Tài Trợ</h1>
+    </section>
+
+    <main class="wrapper">
+        <article class="main-card">
+            <div class="box-notice">
+                📌 <b>Cam kết tối thượng:</b> Quảng cáo tại Bếp Việt luôn tuân thủ nguyên tắc tôn trọng trải nghiệm người dùng. Chúng tôi không bao giờ chấp nhận các quảng cáo che khuất nội dung, gây phiền hà hoặc làm sai lệch công thức nấu ăn.
+            </div>
+
+            <h2 class="section-title">1. Nguyên Tắc Xét Duyệt Quảng Cáo</h2>
+            <p>Mọi nhãn hàng hoặc đối tác xuất hiện trên hệ thống của Bếp Việt đều phải trải qua quy trình đánh giá nghiêm ngặt. Nội dung quảng cáo bắt buộc phải liên quan trực tiếp đến ngành ẩm thực, thiết bị gia dụng nhà bếp, thực phẩm sạch hoặc lối sống lành mạnh.</p>
+
+            <h2 class="section-title">2. Các Hình Thức Hợp Tác Văn Minh</h2>
+            <ul>
+                <li><b>Banner Hiển Thị Cố Định:</b> Được đặt tại các vị trí trống được thiết kế sẵn (Sidebar, Chân bài viết), không làm gián đoạn luồng đọc của độc giả.</li>
+                <li><b>Công Thức Tài Trợ (Sponsored Recipes):</b> Các món ăn sử dụng gia vị hoặc thiết bị của nhãn hàng (Ví dụ: Nồi chiên không dầu, Nước mắm truyền thống). Tuy nhiên, công thức đó phải đảm bảo ngon, chính xác và có giá trị thực tế cho người nấu.</li>
+                <li><b>Tiếp Thị Liên Kết (Affiliate Disclosure):</b> Trong danh sách nguyên liệu hoặc công cụ, chúng tôi có thể chèn link giới thiệu nơi mua uy tín trên Shopee/Lazada. Khi bạn mua qua link, chúng tôi nhận được một phần hoa hồng nhỏ để duy trì máy chủ mà bạn không phải trả thêm bất kỳ chi phí nào.</li>
+            </ul>
+
+            <h2 class="section-title">3. Sự Độc Lập Về Nội Dung</h2>
+            <p>Ý kiến đánh giá và nội dung các bước thực hiện món ăn trên Bếp Việt hoàn toàn độc lập, không chịu sự chi phối của bất kỳ nhà tài trợ nào. Sản phẩm không tốt sẽ không được xuất hiện trên hệ thống của chúng tôi.</p>
+        </article>
+    </main>
+
+</body>
+</html>

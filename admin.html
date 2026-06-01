@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản trị Bếp Việt - Thêm Công Thức</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        body { 
+            background-color: #f8f9fa; /* Màu nền nhẹ nhàng, xám khói */
+            padding: 40px 20px; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Khung bao bọc nội dung chính */
+        .admin-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        /* Phần Header trên cùng (Tiêu đề + Nút quay lại) */
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .admin-header h2 { margin: 0; color: #1f2937; }
+        .btn-ghost { text-decoration: none; color: #ff5e3a; font-weight: 600; padding: 8px 16px; border-radius: 8px; transition: 0.2s; }
+        .btn-ghost:hover { background: #fff3f0; }
+
+        /* Khối thống kê (Dashboard Stats) */
+        .stat-container { display: flex; gap: 20px; margin-top: 20px; margin-bottom: 40px; }
+        .stat-card { flex: 1; padding: 24px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
+        .stat-card:hover { transform: translateY(-5px); }
+        .stat-recipes { background: #fff3e0; border-left: 6px solid #ff9800; }
+        .stat-subs { background: #e3f2fd; border-left: 6px solid #2196f3; }
+        .stat-title { margin: 0 0 10px 0; font-size: 1.05rem; }
+        .stat-num { margin: 0; font-size: 2.8rem; color: #333; line-height: 1; }
+
+        /* Lưới Form nhập liệu */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .form-group { margin-bottom: 8px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; color: #374151; }
+        
+        /* Ô nhập liệu chuẩn (Input, Select, Textarea) */
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            background: #fafafa;
+            transition: 0.2s;
+        }
+        .form-control:focus { border-color: #ff5e3a; background: white; box-shadow: 0 0 0 4px rgba(255, 94, 58, 0.1); }
+        textarea.form-control { min-height: 120px; resize: vertical; line-height: 1.5; }
+        .hint { font-size: 0.85rem; color: #6b7280; margin-top: 6px; font-style: italic; }
+
+        /* Nút Xóa từ khóa trong Input */
+        .clear-input-btn {
+            display: none; position: absolute; right: 15px; top: 50%; 
+            transform: translateY(-50%); cursor: pointer; color: #999; 
+            font-weight: bold; font-size: 16px; line-height: 1; padding: 5px;
+        }
+        .clear-input-btn:hover { color: #333; }
+
+        /* Dropdown lịch sử gõ phím */
+        .history-dropdown {
+            display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+            background: white; border: 1px solid #ddd; border-radius: 8px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); list-style: none; 
+            padding: 0; margin: 4px 0 0 0; z-index: 1000; overflow: hidden;
+        }
+
+        /* Bảng Quản trị (Admin Table) */
+        .table-wrapper { overflow-x: auto; background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; }
+        .admin-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .admin-table th { padding: 16px 12px; font-weight: 600; color: #374151; background: #fdfbf7; border-bottom: 2px solid #eee; }
+        .admin-table td { padding: 16px 12px; border-bottom: 1px solid #eee; vertical-align: middle; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        
+        <div class="admin-header">
+            <h2>🍳 Quản trị Bếp Việt</h2>
+            <a href="index.html" class="btn-ghost">← Quay lại Trang chủ</a>
+        </div>
+        
+        <div class="stat-container">
+            <div class="stat-card stat-recipes">
+                <h3 class="stat-title" style="color: #e65100;">Tổng số công thức</h3>
+                <h1 class="stat-num" id="dashRecipes">0</h1>
+            </div>
+            <div class="stat-card stat-subs">
+                <h3 class="stat-title" style="color: #1565c0;">Khách đăng ký Email</h3>
+                <h1 class="stat-num" id="dashSubs">0</h1>
+            </div>
+        </div>
+
+        <form id="addRecipeForm">
+            <div class="form-grid">
+                
+                <div class="form-group">
+                    <label>Tên món ăn (*)</label>
+                    <div style="position: relative; width: 100%;">
+                        <input type="text" id="recipeName" class="form-control" required autocomplete="off"
+                               style="padding-right: 40px;" 
+                               oninput="document.getElementById('clearNameBtn').style.display = this.value ? 'block' : 'none'" 
+                               onfocus="typeof showCustomHistory === 'function' && showCustomHistory()" 
+                               onblur="setTimeout(() => typeof hideCustomHistory === 'function' && hideCustomHistory(), 200)"
+                               onchange="typeof saveCustomHistory === 'function' && saveCustomHistory(this.value)"
+                               placeholder="VD: Bún riêu cua...">
+                        
+                        <span id="clearNameBtn" class="clear-input-btn"
+                              onclick="document.getElementById('recipeName').value = ''; this.style.display = 'none'; document.getElementById('recipeName').focus();">
+                            ✕
+                        </span>
+
+                        <ul id="customHistoryDropdown" class="history-dropdown"></ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Vùng miền</label>
+                    <select id="recipeRegion" class="form-control">
+                        <option value="Miền Bắc">Miền Bắc</option>
+                        <option value="Miền Trung">Miền Trung</option>
+                        <option value="Miền Nam">Miền Nam</option>
+                        <option value="Khắp nơi">Khắp nơi (Đa vùng miền)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Thời gian nấu</label>
+                    <input type="text" id="recipeTime" class="form-control" placeholder="VD: 45 phút">
+                </div>
+
+                <div class="form-group">
+                    <label>Số người ăn</label>
+                    <input type="number" id="recipeServings" class="form-control" placeholder="VD: 4" min="1">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Lượng Kcal</label>
+                    <input type="number" id="recipeCalories" class="form-control" placeholder="VD: 450" min="0">
+                    <div class="hint">Ước tính tổng lượng calo của món ăn.</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Chế độ ăn 🎯</label>
+                    <select id="recipeDietType" class="form-control" onchange="updateCategories()">
+                        <option value="Mặn">🍖 Món Mặn</option>
+                        <option value="Chay">🌱 Món Chay</option>
+                        <option value="Đồ uống">🍹 Đồ uống</option>
+                    </select>
+                </div>   
+
+                <div class="form-group">
+                    <label>Danh mục (*)</label>
+                    <select id="recipeCategory" class="form-control" required>
+                        <option value="Canh">🥣 Canh & Súp</option>
+                        <option value="Xào">🥘 Món xào</option>
+                        <option value="Luộc">🥚 Món luộc</option>
+                        <option value="Nướng">🔥 Món nướng</option>
+                        <option value="Tráng miệng">🍮 Tráng miệng</option>
+                        <option value="Cơm">🍚 Cơm & Bún</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Độ khó</label>
+                    <select id="recipeDifficulty" class="form-control">
+                        <option value="Dễ">Dễ</option>
+                        <option value="Trung bình">Trung bình</option>
+                        <option value="Khó">Khó</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Hình ảnh món ăn (Tải lên từ máy)</label>
+                    <input type="file" id="recipeImage" class="form-control" accept="image/*" style="padding: 10px;">
+                    <div class="hint">Chọn một bức ảnh định dạng JPG, PNG từ máy tính của bạn.</div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Mô tả ngắn</label>
+                    <textarea id="recipeDesc" class="form-control" placeholder="Viết vài dòng giới thiệu sự hấp dẫn về món ăn..."></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Nguyên liệu (*)</label>
+                    <textarea id="recipeIngredients" class="form-control" required placeholder="500g sườn non&#10;3 quả cà chua&#10;Hành lá..."></textarea>
+                    <div class="hint">Mỗi nguyên liệu viết trên 1 dòng (Nhấn Enter để xuống dòng).</div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Các bước thực hiện (*)</label>
+                    <textarea id="recipeSteps" class="form-control" required placeholder="Bước 1: Rửa sạch sườn...&#10;Bước 2: Xào cà chua..."></textarea>
+                    <div class="hint">Mỗi bước viết trên 1 dòng (Nhấn Enter để xuống dòng). Có thể ghi '30 phút' để app tự tạo Đồng hồ thông minh.</div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Mẹo hay (Tip)</label>
+                    <input type="text" id="recipeTip" class="form-control" placeholder="VD: Nên cho chút muối khi luộc để giữ màu sắc đẹp hơn...">
+                </div>
+            </div>
+
+            <button type="submit" style="width: 100%; margin-top: 30px; padding: 16px; font-size: 1.15rem; font-weight: bold; background: #ff5e3a; color: white; border: none; border-radius: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 15px rgba(255, 94, 58, 0.3);">
+                💾 Lưu Công Thức
+            </button>
+        </form>
+
+        <hr style="margin: 50px 0; border: none; border-top: 2px dashed #eee;">
+        
+        <div class="admin-header" style="border: none; padding: 0; margin-bottom: 20px;">
+            <div>
+                <h2 style="margin: 0; color: #1f2937;">📋 Quản lý Công Thức</h2>
+                <p style="color: #6b7280; font-size: 0.95rem; margin-top: 5px;">Thực hiện Sửa, Xóa hoặc Đánh dấu Thịnh hành tại đây.</p>
+            </div>
+        </div>
+        
+        <div class="table-wrapper">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên món ăn</th>
+                        <th>Danh mục</th>
+                        <th style="text-align: center;">Thịnh hành</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTableBody">
+                    </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
